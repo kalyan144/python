@@ -1,0 +1,43 @@
+print("🍕 Welcome to the Ultimate Pizza Maker 3000! 🍕")
+
+# Variable 1: User's name
+name = input("What is your name, pizza chef? ")
+print("Hi " + name + "! Let's make your dream pizza!")
+
+# Base price
+total_price = 5  # base price for dough and sauce
+
+# Ingredients menu (dictionary)
+ingredients = {
+    "cheese": 1,
+    "pepperoni": 1.5,
+    "mushrooms": 1,
+    "pineapple": 2,
+    "olives": 1,
+    "bacon": 2,
+    "green peppers": 1
+}
+
+print("\nHere are the available toppings and their prices:")
+for topping, price in ingredients.items():
+    print(f" - {topping.title()}: ${price}")
+
+# Loop to let user pick 3 toppings
+chosen_toppings = []
+for i in range(3):
+    topping = input("\nChoose a topping (" + str(i + 1) + " of 3): ").lower()
+    if topping in ingredients:
+        chosen_toppings.append(topping)
+        total_price += ingredients[topping]
+        print(f"{topping.title()} added! Current total: ${total_price}")
+    else:
+        print("Sorry, we don't have that topping!")
+
+# Final message
+print("\n🍽️ Building your pizza, " + name + "...")
+print("You chose the following toppings:")
+for t in chosen_toppings:
+    print(" - " + t.title())
+
+print("\n🧾 Your final total is: $" + str(round(total_price, 2)))
+print("Thanks for using the Pizza Maker 3000! Bon appétit, " + name + "!")
